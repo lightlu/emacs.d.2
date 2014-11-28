@@ -65,6 +65,11 @@
 	    (multi-term)
 	  (switch-to-buffer b))))
 
+(defun switch-multi-term-by-index (index)
+  (let ((b (get-buffer (format "*%s<%s>*" multi-term-buffer-name index))))
+       (when (buffer-live-p b)
+	 (switch-to-buffer b))))
+
 (defun term-toggle-line-char-mode ()
   "Toggle term to line and char mode"
   (interactive)
@@ -74,8 +79,18 @@
 
 (define-key term-mode-map (kbd "C-j") 'term-toggle-line-char-mode)
 (define-key term-raw-map (kbd "C-j") 'term-toggle-line-char-mode)
+(define-key global-map (kbd "C-x t 1") (lambda () (interactive) (switch-multi-term-by-index "1")))
+(define-key global-map (kbd "C-x t 2") (lambda () (interactive) (switch-multi-term-by-index "2")))
+(define-key global-map (kbd "C-x t 3") (lambda () (interactive) (switch-multi-term-by-index "3")))
+(define-key global-map (kbd "C-x t 4") (lambda () (interactive) (switch-multi-term-by-index "4")))
+(define-key global-map (kbd "C-x t 5") (lambda () (interactive) (switch-multi-term-by-index "5")))
+(define-key global-map (kbd "C-x t 6") (lambda () (interactive) (switch-multi-term-by-index "6")))
+(define-key global-map (kbd "C-x t 7") (lambda () (interactive) (switch-multi-term-by-index "7")))
+(define-key global-map (kbd "C-x t 8") (lambda () (interactive) (switch-multi-term-by-index "8")))
+(define-key global-map (kbd "C-x t 9") (lambda () (interactive) (switch-multi-term-by-index "9")))
+(define-key global-map (kbd "C-x t 0") (lambda () (interactive) (switch-multi-term-by-index "0")))
 
-(define-key global-map (kbd "C-x t") 'multi-term)
+(define-key global-map (kbd "C-x t t") 'multi-term)
 (define-key global-map (kbd "C-x ,") 'multi-term-next)
 
 (setq multi-term-program "/bin/bash")
